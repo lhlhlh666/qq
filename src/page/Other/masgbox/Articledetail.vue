@@ -16,7 +16,7 @@
                             <span>发布日期：2017-05-23</span>
                             <span>share</span>
                         </div>                      
-                        <p>
+                        <p style="line-height:30px;text-indent: 2em">
                             {{articlede.connect}}
                         </p>
                     </div>
@@ -74,7 +74,7 @@ export default {
     },
     created(){
         this._getArticleDet(this.$route.query.articleID)
-        console.log(this.$route)
+        // console.log(this.$route)
     },
 //   props: {
 //     arcontent: { type: [Object, Array] }
@@ -94,7 +94,7 @@ export default {
 }
 .article-box-title {
   width: 1100px;
-  height: 40px;
+  height: 30px;
   line-height: 30px;
   padding-left: 30px;
   margin: 10px auto;
@@ -114,7 +114,7 @@ export default {
   margin: 0 auto;
   padding-left: 10px;
   padding-right: 15px;
-  background-color: white;
+  background-color: black;
 }
 .article-box-msg {
   width: 70%;
@@ -140,6 +140,7 @@ export default {
   border-bottom: 1px solid gray;
 }
 .article-box-aside {
+  margin-top: 41px;
   width: 25%;
   margin-right: 10px;
   padding: 30px 10px;

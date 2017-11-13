@@ -8,15 +8,17 @@ import store from './store/'
 import { userInfo } from './api'
 import AMap from 'vue-amap'
 import VueCookie from 'vue-cookie'
+import $ from 'jquery'
 
 Vue.use(ElementUI);
 Vue.use(VueCookie);
 Vue.use(AMap);
 
 Vue.config.productionTip = false
-const whiteList = ['/home', '/goods', '/login', '/goodsDetails','/msgbox/allmsg','/msgbox/storemsg','/msgbox/managerblog','/paymenthome','/about','/store',] // 不需要登陆的页面
+const whiteList = ['/home','/Articledetail', '/goods', '/login', '/goodsDetails','/msgbox/allmsg','/msgbox/storemsg','/msgbox/managerblog','/paymenthome','/about','/store',] // 不需要登陆的页面
 router.beforeEach(function (to, from, next) {
   userInfo().then(res => {
+
     if (res.status === '1') { // 没登录
       if (whiteList.indexOf(to.path) !== -1) { // 白名单
         next()

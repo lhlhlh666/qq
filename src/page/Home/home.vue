@@ -74,30 +74,20 @@
                 <span>New product</span>
               </div>
               <div class="home-hot-msg clearfix">             
-                <aside class="hot-msg-aside clearfix">                             
+                <aside v-for="(artic, index) in acticle" v-if="index<2" class="hot-msg-aside clearfix">                             
                   <div class="hot-msg-img clearfix">
-                    <img src="../../assets/img/h-slid1.jpg" alt="">                 
+                    <img :src="artic.imgcon" alt="">                 
                     <div>
-                      <h3 style="font-size:16px; font-weight: normal; color: #191919;margin-top: 20px;">探路者&新浪体育超级雪滑雪季暨明星邀请赛今冬启动 </h3>  
+                      <router-link :to="'/Articledetail?articleID=' + artic.articleID">
+                      <h3 style="font-size:16px; font-weight: normal; color: #191919;margin-top: 20px;">{{artic.title}} </h3>  </router-link>
                       <span style="font-size:13px;color:#777777;margin-top: 15px;">发布日期： 2017-05-23</span>  
-                      <p style="font-size:13px;color:#777777;  margin-top: 20px;">秋天的拉萨，天气比较干燥，这个时候在家里养一些可以制造氧气和水分的植物大有好处。
-                        记者走访多个花店后发现，很多店老板都会同时提到一种制氧植物——红豆杉。红豆杉有“植物增氧机”之称..</p>
+                      <p class="text" ref="text" style="font-size:13px;color:#777777;  margin-top: 20px;">{{artic.connect}}</p>
                      </div>
-                  </div>                                         
+                  </div>                                     
                  
-
-                 <div class="hot-msg-img clearfix">
-                    <img src="../../assets/img/h-slid2.jpg" alt="">                 
-                    <div style="margin-left: 10px;">
-                      <h3 style="font-size:16px; font-weight: normal; color: #191919;margin-top: 20px;">探路者&新浪体育超级雪滑雪季暨明星邀请赛今冬启动 </h3>  
-                      <span style="font-size:13px;color:#777777;margin-top: 15px;">发布日期： 2017-05-23</span>  
-                      <p style="font-size:13px;color:#777777;  margin-top: 20px;">秋天的拉萨，天气比较干燥，这个时候在家里养一些可以制造氧气和水分的植物大有好处。
-                        记者走访多个花店后发现，很多店老板都会同时提到一种制氧植物——红豆杉。红豆杉有“植物增氧机”之称..</p>
-                    </div>                                       
-                </div>
-                  
+                               
                 </aside>
-                <div class="home-hot-img">
+                <div class="home-hot-img clearfix">
                   <img src="../../assets/img/h-hotimg.jpg" alt="">
                  </div>
               </div>
@@ -140,12 +130,14 @@
 import { getComputer } from "/api/goods.js";
 import Header from "/common/header.vue";
 import Footer from "/common/footer.vue";
+import { getArticle } from '/api/articles';
 // import mallGoods from "../comm/mallGoods.vue";
 export default {
   data() {
     return {
       computer: [],
-      productImageBig: []
+      productImageBig: [],
+      acticle:[]
     };
   },
   components: {},
@@ -153,16 +145,56 @@ export default {
     _getComputer() {
       getComputer().then(res => {
         this.computer = res.result.data;
+       
       });
-    }
+    },
+  
+  _getActicle(){
+    getArticle().then(res =>{
+      this.acticle = res.data;
+      //  console.log(this.acticle)
+    })
   },
+  Articledetail(id){
+    this.$router.push({path: "goodsDetails/productId=" + id })
+  },
+},
   created() {
     this._getComputer();
-  }
+    this._getActicle();
+  },
+mounted() {
+    $(document).ready(function() {
+      //限制字符个数
+      // console.log('qqqqq')
+      $(".text").each(function() {
+        var maxwidth = 20;
+        //  console.log('23435')
+        if ($(this).text().length > maxwidth) {
+          $(this).text(
+            $(this)
+              .text()
+              .substring(0, maxwidth)
+          );
+         
+          $(this).html($(this).html() + "...");
+        }
+      });
+    });
+  },
+ 
 };
 </script>
 
 <style lang="css" rel="stylesheet/css" scoped>
+.text{position: relative; line-height: 25px; max-height: 100px;overflow: hidden; font-size: 15px; color: gray}
+.text::after{content: "..."; position: absolute; bottom: 0; right: 0; padding-left: 40px;
+background: -webkit-linear-gradient(left, transparent, #fff 55%);
+background: -o-linear-gradient(right, transparent, #fff 55%);
+background: -moz-linear-gradient(right, transparent, #fff 55%);
+background: linear-gradient(to right, transparent, #fff 55%);
+}
+
 .clearfix::after {
   content: "";
   display: block;
@@ -233,7 +265,7 @@ el-carousel__item h3 {
 }
 
 .home-about-title {
-  width: 65%;
+  width: 1200px;
   margin: 0 auto;
   text-align: left;
   margin-top: 100px;
@@ -312,13 +344,14 @@ el-carousel__item h3 {
 
 /* =======热卖商品========= */
 .h-hot {
-  width: 100%;
+  width: 1200px;margin: 0 auto;
   margin-top: 80px;
+  margin: 0 auto;
   /* border: 1px solid red; */
 }
 .h-hot-title {
-  width: 65%;
-  margin: 0 auto;
+  width: 1200px;
+  /* margin: 0 auto; */
   text-align: left;
   margin-bottom: 10px;
   border-bottom: 1px solid gray;
@@ -330,8 +363,9 @@ el-carousel__item h3 {
 }
 
 .h-hot-product {
-  width: 65%;
-  margin: 0 20%;
+  width: 1200px;
+  /* margin: 0 auto; */
+  /* margin-left: 40px; */
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -373,13 +407,13 @@ el-carousel__item h3 {
 }
 
 .home-hot-msg {
-  width: 65%;
+  width: 1200px;
   margin: 20px auto;
   text-align: left;
   /* border: 1px solid gold; */
 }
 .hot-msg-aside {
-  width: 65%;
+  width: 730px;
   float: left;
   padding-top: 10px;
 }
@@ -392,18 +426,18 @@ el-carousel__item h3 {
 .hot-msg-img img {
   width: 38%;
   float: left;
-  margin-right: 10px;
-  margin: 8px;
+  margin-right: 5px;
+  /* margin: 8px; */
 }
 .home-hot-img {
   width: 35%;
   float: right;
   text-align: right;
-  margin-top: 26px;
+  margin-top: -18%;
 }
 .home-hot-img img {
   width: 98%;
-  margin-top: 15px;
+  /* margin-top: 15px; */
 }
 
 /* =============背景图片部分==================== */
@@ -491,8 +525,15 @@ el-carousel__item h3 {
     top: 150px;
     left: 57%;
   }
+  .h-hot-product{
+    width: 65%;
+     margin: 0 auto;
+    margin-left: 25px;
+  }
   .h-hot-proGoods {
     width: 45%;
+     margin: 0 auto;
+    
   }
 
   .home-hot-msg {
@@ -598,6 +639,16 @@ el-carousel__item h3 {
     right: 35%;
     bottom: 50%;
     /* position: absolute;  bottom: 0px; */
+  }
+   .h-hot-product{
+    width: 100%;
+     margin: 0 auto;
+    margin-left: 0px;
+  }
+  .h-hot-proGoods {
+    width: 50%;
+     margin: 0 auto;
+    
   }
   .home-cont {
     margin-top: 5px;

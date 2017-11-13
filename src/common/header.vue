@@ -14,22 +14,7 @@
               <div class="wf-td right-block">
                   <div class="icon">
                        <!--搜索 -->
-                       <el-button type="text" @click.native="dialogVisible = true">
                            <i class="fa fa-search" aria-hidden="true"></i>
-                       </el-button>
-                      <el-dialog title="提示" 
-                      :visible.sync="dialogVisible" 
-                      width="30%" 
-                      :before-close="handleClose">
-                          <span >
-                              <input class="seach-input" type="text" placeholder="请输入搜索内容">
-                          </span>
-                          <span slot="footer" class="dialog-footer">
-                              <el-button @click.native="dialogVisible = false">取 消</el-button>
-                              <el-button type="primary" @click.native="dialogVisible = false">确 定</el-button>
-                          </span>
-                      </el-dialog>  
-                      
                         <!-- 用户 -->              
                   </div>
 
@@ -47,20 +32,20 @@
                         </div>
                         <p class="name">{{userInfo.info.name}}</p>
                       </li>
-                      <li>
-                        <router-link to="/user/orderList">我的订单</router-link>
+                      <li >
+                        <router-link class="header-link" to="/user/orderList">我的订单</router-link>
                       </li>
                       <li>
-                        <router-link to="/user/information">账号资料</router-link>
+                        <router-link class="header-link" to="/user/information">账号资料</router-link>
                       </li>
                       <li>
-                        <router-link to="/user/addressList">收货地址</router-link>
+                        <router-link class="header-link" to="/user/addressList">收货地址</router-link>
                       </li>
                       <li>
-                        <router-link to="/user/support">售后服务</router-link>
+                        <router-link class="header-link" to="/user/support">售后服务</router-link>
                       </li>
                       <li>
-                        <router-link to="/user/coupon">我的优惠</router-link>
+                        <router-link class="header-link" to="/user/coupon">我的优惠</router-link>
                       </li>
                       <li>
                         <a href="javascript:;" @click="_loginOut">退出</a>
@@ -129,7 +114,9 @@
           <div class="wf-wrap">
               <div class="wf-table">
                   <div id="branding" class="wf-td bit-logo-bit">
+                    <router-link to="/home">
                       <img id="img" src="../assets/img/logo.png" alt="">
+                    </router-link>
                   </div>
                   <div id="assistive-info" class="wf-td assistive-info" role="complementary">
                     <div class="wf-el" id="wf-el">
@@ -160,7 +147,7 @@
                <!-- 响应式 -->
               <div style=" z-index: 99;" class="nav-menu">
                 <el-row class="tac">  
-                  <el-menu default-active="1" class="el-menu-vertical-demo"  @open="handleOpen" @close="handleClose2"
+                  <el-menu default-active="1" class="el-menu-vertical-demo"
                       background-color="black"
                       text-color="#fff"
                       active-text-color="black">
@@ -305,6 +292,9 @@
 @import "../assets/style/theme";
 @import "../assets/style/mixin";
 
+  .header-link:hover{
+    color: white; 
+  }
 // 用户
 .user {
   margin-top: 12px;
@@ -400,6 +390,13 @@
     &:before {
       left: 50%;
     }
+    .nav-user-list li:hover{
+      color:white;
+    }
+    // &:hover{
+    //   color:white;
+    // }
+
   }
 }
 // =================购物车============
@@ -473,6 +470,7 @@
       }
     }
   }
+
   .nav-user-wrapper {
     right: 0;
     width: 360px;
@@ -504,6 +502,7 @@
       border-top: 1px solid #f0f0f0;
       &:hover {
         background: #3C7FF2;
+        color: white;
         .del {
           display: block;
         }
@@ -830,8 +829,8 @@
 } */
 .main-nav ul li {
   width: 80px;
-  height: 30px;
-  line-height: 30px;
+  height: 100%;
+  line-height: 36px;
   float: left;
   font-size: 13px;
   list-style: none;
