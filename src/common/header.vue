@@ -145,7 +145,7 @@
               </ul>
               </div>
                <!-- 响应式 -->
-              <div style=" z-index: 99;" class="nav-menu">
+              <div class="nav-menu">
                 <el-row class="tac">  
                   <el-menu default-active="1" class="el-menu-vertical-demo"
                       background-color="black"
@@ -157,9 +157,9 @@
 
                       <el-menu-item-group>          
                         <el-menu-item index="1-1" class="menu-item"><router-link class="r-link" to="/">商城首页</router-link></el-menu-item>
-                        <el-menu-item index="1-2" class="menu-item"><router-link class="r-link" to="/allprodect">所有商品</router-link></el-menu-item>
+                        <el-menu-item index="1-2" class="menu-item"><router-link class="r-link" to="/goods">所有商品</router-link></el-menu-item>
                         <el-menu-item index="1-3" class="menu-item"><router-link class="r-link" to="/msgbox">商城动态</router-link></el-menu-item>
-                        <el-menu-item index="1-4" class="menu-item"><router-link class="r-link" to="/payment">支付方式</router-link></el-menu-item>
+                        <el-menu-item index="1-4" class="menu-item"><router-link class="r-link" to="/paymenthome">支付方式</router-link></el-menu-item>
                         <el-menu-item index="1-5" class="menu-item"><router-link class="r-link" to="/about">关于店铺</router-link></el-menu-item>
                         <el-menu-item index="1-6" class="menu-item"><router-link class="r-link" to="/store">线下门店</router-link></el-menu-item>
                         <el-menu-item index="1-7" class="menu-item"><router-link class="r-link" to="/login">登录|注册</router-link></el-menu-item>
@@ -291,6 +291,9 @@
 <style lang="scss" rel="stylesheet/scss" scoped>
 @import "../assets/style/theme";
 @import "../assets/style/mixin";
+.el-menu li{
+  z-index: 555 !important;
+}
 
   .header-link:hover{
     color: white; 
@@ -539,7 +542,7 @@
       }
       img {
         display: block;
-        @include wh(80px, 80px);
+        @include wh(80px, 80px);      
         border-radius: 3px;
         overflow: hidden;
       }
@@ -685,6 +688,7 @@
   color: white;
   right: 0px;
   bottom: 400px;
+  z-index: 888;
 }
 .f-fa {
   position: fixed;
@@ -705,14 +709,20 @@
 }
 .wf-wrap {
   max-width: 1920px;
-  width: 65%;
+  width: 1100px;
   margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
   display: flex;
+  
 }
 
 .wf-td {
   width: 60%;
+  margin: 0 auto;
   display: flex;
+  text-align: center;
+
 }
 
 .wf-float-left,
@@ -721,15 +731,14 @@
 }
 .right-block {
   width: 18.2%;
-  margin-left: 248px;
+  margin-left: 40%;
 
   position: relative;
-  // border: 1px solid forestgreen;
+
 }
 
 .icon {
-  // width: 50%;
-  // position: absolute;
+
   right: 0px;
 }
 .icon i {
@@ -755,6 +764,7 @@
   top: 40px;
   display: none;
 }
+
 @media only screen and (max-width: 1000px) {
   #top-bar {
     display: none;
@@ -765,12 +775,12 @@
   width: 100%;
   height: 110px;
   background-color: white;
-  /* border: 1px solid blue; */
+
 }
 .logo-classic .wf-wrap {
-  width: 100%;
+  width: 1100px;
   height: 69px;
-  /* border: 1px solid red; */
+
 }
 .logo-classic .navigation-holder {
   width: 100%;
@@ -781,14 +791,14 @@
 }
 .logo-classic .wf-table {
   max-width: 1920px;
-  width: 65%;
+  width: 1100px;
   margin: 0 auto;
   position: relative;
   display: flex;
 }
 .bit-logo-bit {
   width: 60%;
-  /* border: 1px solid red; */
+  
 }
 .assistive-info {
   width: 40%;
@@ -819,7 +829,7 @@
 
 .main-nav {
   max-width: 1920px;
-  width: 65%;
+  width: 1100px;
   height: 30px;
   margin: 0 auto;
   clear: both;
@@ -854,23 +864,54 @@
 .menu-item :hover {
   background-color: black !important;
 }
+@media screen and (min-width: 1000px) and (max-width: 1200px) {
+  .wf-wrap {
+       width: 100%;
+  }
 
+  .logo-classic {
+  width: 100%;
+
+}
+.logo-classic .wf-wrap {
+  width: 100%;
+
+}
+.logo-classic .navigation-holder {
+  width: 100%;
+ 
+}
+.logo-classic .wf-table {
+  width: 100%;
+  
+}
+ 
+}
 @media only screen and (max-width: 1000px) {
   #assistive-info {
     display: none;
   }
   #branding {
-    text-align: center;
+    text-align: center !important;
     width: 300px;
+    margin: 0 auto !important;
   }
 
   .bit-logo-bit {
     width: 100%;
     margin: 0 auto;
   }
+ .logo-classic .wf-wrap {
+  width: 100%;
+  height: 69px;
+  
+ }
+
   #img {
     width: 155px;
     margin: 0 auto;
+    margin-left: 30%;
+
   }
   #main-nav {
     display: none;
@@ -891,7 +932,7 @@
   #assistive-info {
     display: block;
     width: 100%;
-    /* border: 1px solid red; */
+  
   }
   #nav {
     margin-top: 80px;
@@ -903,9 +944,16 @@
     width: 100%;
     margin: 0 auto;
   }
+    .logo-classic .wf-table {      
+  width:80%;
+  margin: 0 auto;
+  text-align: center;
+
+  }
   #img {
     width: 155px;
     margin: 0 auto;
+    margin-left: 12%;
   }
 
   .assistive-info {

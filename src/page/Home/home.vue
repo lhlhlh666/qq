@@ -1,10 +1,9 @@
 <template>
   <div>     
       
-        <div class="home-main">
+        <div class="home-main clearfix">
               <!-- 轮播图 -->
-            <section class="h-slide">
-               
+            <section class="h-slide">               
                  <div class="block">    
                     <el-carousel height="600px">
                         <el-carousel-item v-for="(item,i) in 2" :key="item"></el-carousel-item>                             
@@ -27,24 +26,21 @@
             </section>
             <!-- =======关于我们========== -->
 
-            <section>
+            <section class="clearfix">
               <div class="home-about-title">
                 <span class="homt-abt-span">关于我们</span>
                 <span style="">About us</span>
               </div>
                 
-                <div class="home-aboutus clearfix">
-                
-                    <aside class="home-abt-aside ">
+                <div class="home-aboutus clearfix">                
+                    <aside class="home-abt-aside clearfix">
                         <h1>SPORTING GOODS</h1>
                         <span>
-                      在专栏设置面板中，您可以更换背景图片的
-                      非常简单的，不需要任何别的设置
+                      作为一项户外运动，滑雪运动最大的魅力在于人们能够从运动中体验到回归自然的感觉
                       </span>
                       <div>查看详情</div>
                     </aside>
-                    <div class="home-aboutus-img"></div>
-               
+                    <div class="home-aboutus-img"></div>               
                 </div>
             </section>
 
@@ -78,7 +74,7 @@
                   <div class="hot-msg-img clearfix">
                     <img :src="artic.imgcon" alt="">                 
                     <div>
-                      <router-link :to="'/Articledetail?articleID=' + artic.articleID">
+                      <router-link style="text-decoration: none;" :to="'/Articledetail?articleID=' + artic.articleID">
                       <h3 style="font-size:16px; font-weight: normal; color: #191919;margin-top: 20px;">{{artic.title}} </h3>  </router-link>
                       <span style="font-size:13px;color:#777777;margin-top: 15px;">发布日期： 2017-05-23</span>  
                       <p class="text" ref="text" style="font-size:13px;color:#777777;  margin-top: 20px;">{{artic.connect}}</p>
@@ -98,9 +94,8 @@
             <section class="home-bg home-bg-one">
               <div class="home-bg-msg">
                  <h1>SPORTING GOODS</h1>
-                 <span>
-                    在专栏设置面板中，您可以更换背景图片的<br>
-                    非常简单的，不需要任何别的设置
+                 <span>                
+                  雪板———一件普通的工具,却是开启这份礼物的钥匙<br>让我们能尽情享受滑雪的乐趣
                  </span>
               </div>
             </section>
@@ -108,8 +103,7 @@
               <div class="home-bg-msg">
                  <h1>SPORTING GOODS</h1>
                  <span>
-                    在专栏设置面板中，您可以更换背景图片的<br>
-                    非常简单的，不需要任何别的设置
+                    蔚蓝的天空，皑皑的白雪，当阳光尽情地铺洒开来<br>这是世界赠与我们的礼物
                  </span>
               </div>
             </section>
@@ -117,8 +111,7 @@
               <div class="home-bg-msg">
                  <h1>SPORTING GOODS</h1>
                  <span>
-                    在专栏设置面板中，您可以更换背景图片的<br>
-                    非常简单的，不需要任何别的设置
+                     让身体沉浸在充满诱惑的蓝天白雪中，在雪上纵横驰骋，沿着雪道飞速急下<br>感受到风从身边穿过。
                  </span>
               </div>
             </section>
@@ -202,6 +195,9 @@ background: linear-gradient(to right, transparent, #fff 55%);
   height: 0px;
   overflow: hidden;
 }
+.clearfix {
+  -ms-zoom: 1;
+}
 
 el-carousel__item h3 {
   color: #475669;
@@ -255,13 +251,8 @@ el-carousel__item h3 {
   left: 35%;
   right: 35%;
   bottom: 50%;
-  z-index: 20;
+  z-index: 15;
   font-weight: 700;
-}
-.home-cont:hover {
-  background-color: #3c7ff2;
-  color: white;
-  /* opacity: 0.5; */
 }
 
 .home-about-title {
@@ -290,8 +281,8 @@ el-carousel__item h3 {
   right: 35%;
   bottom: 50%;
   text-shadow: 0px 0px 2px gray;
-  z-index: 20;
-  /* border: 1px solid fuchsia; */
+  z-index: 10;
+
 }
 
 .home-aboutus {
@@ -303,19 +294,26 @@ el-carousel__item h3 {
   float: right;
   height: 600px;
   background-image: url("../../assets/img/h-about.jpg");
+  background-repeat: no-repeat;
 }
 .home-abt-aside {
   width: 30%;
   margin-top: 50px;
   color: black;
   float: left;
-  position: relative;
+  position: relative; 
 }
+/* .home-aboutus > .home-abt-aside{
+    transition: all 0.3s ease 0s;
+} */
+
 .home-abt-aside h1 {
-  width: 80%;
+  width: 100%;
   font-size: 40px;
+  margin-top: 50px;
   position: absolute;
-  left: 58%;
+  left: 49%;
+
 }
 .home-abt-aside span {
   display: block;
@@ -323,7 +321,7 @@ el-carousel__item h3 {
   font-size: 14px;
   text-align: left;
   position: absolute;
-  top: 100px;
+  top: 150px;
   left: 66%;
 }
 .home-abt-aside div {
@@ -333,7 +331,7 @@ el-carousel__item h3 {
   text-align: center;
   border: 1px solid black;
   position: absolute;
-  top: 150px;
+  top: 230px;
   left: 66%;
 }
 .home-abt-aside div:hover {
@@ -399,8 +397,8 @@ el-carousel__item h3 {
 }
 
 .h-hot-proGoods span {
-  font-size: 18px;
-  color: gainsboro;
+  font-size: 17px;
+  color: gray;
   display: block;
   margin: 20px auto;
   /* border: 1px solid hotpink; */
@@ -410,7 +408,7 @@ el-carousel__item h3 {
   width: 1200px;
   margin: 20px auto;
   text-align: left;
-  /* border: 1px solid gold; */
+  /* border: 1px solid red; */
 }
 .hot-msg-aside {
   width: 730px;
@@ -499,36 +497,51 @@ el-carousel__item h3 {
     float: none;
     background-size: cover;
     margin: 0 auto;
-  }
-
-  .home-abt-aside {
-    width: 50%;
-    margin-top: 50px;
-    margin-left: -17%;
-    float: left;
-    /* position: relative; */
-  }
-  .home-abt-aside h1 {
-    width: 100%;
-    /* position: absolute; */
-    left: 45%;
-  }
-  .home-abt-aside span {
-    /* position: absolute; */
-    top: 90px;
-    left: 57%;
-  }
-
-  .home-abt-aside div {
-    /* width: 104px; height: 39px; line-height: 39px; border: 1px solid black; */
-    position: absolute;
-    top: 150px;
-    left: 57%;
-  }
+  } 
+.h-hot {
+  width: 100%;margin: 0 auto;
+  margin-top: 80px;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+}
+ .home-abt-aside {
+  width: 80%;
+  margin-top: 50px;
+  color: black;
+  float: left;
+  position: relative;
+  /* border: 1px solid forestgreen; */
+}
+.home-abt-aside h1 {
+  width: 70%;
+  font-size: 40px;
+  position: absolute;
+  left:0%;
+  /* border: 1px solid firebrick; */
+}
+.home-abt-aside span {
+  display: block;
+  width: 46%;
+  font-size: 14px;
+  text-align: left;
+  position: absolute;
+  top: 80px;
+  left:12%;
+}
+.home-abt-aside div {
+  width: 104px;
+  height: 39px;
+  line-height: 39px;
+  text-align: center;
+  border: 1px solid black;
+  position: absolute;
+  top: 150px;
+  left: 12%;
+}
   .h-hot-product{
     width: 65%;
      margin: 0 auto;
-    margin-left: 25px;
+    /* margin-left: 25px; */
   }
   .h-hot-proGoods {
     width: 45%;
@@ -537,10 +550,11 @@ el-carousel__item h3 {
   }
 
   .home-hot-msg {
-    width: 90%;
+    width: 100%;
     margin: 20px auto;
+    margin: 0 auto;
     text-align: center;
-    border: 1px solid gold;
+    /* border: 1px solid blue; */
   }
   .hot-msg-aside {
     width: 80%;
@@ -570,22 +584,41 @@ el-carousel__item h3 {
     background-size: cover;
     margin: 0 auto;
   }
-  .home-abt-aside {
-    width: 100%;
-    text-align: left;
-  }
-  .home-abt-aside h1 {
-    width: 100%;
-    left: 18%;
-  }
-  .home-abt-aside span {
-    left: 18%;
-  }
-  .home-abt-aside div {
-    position: absolute;
-    top: 150px;
-    left: 18%;
-  }
+ .home-abt-aside {
+  width: 100%;
+  margin-top: 50px;
+  color: black;
+  float: left;
+  text-align: left;
+  position: relative;
+  /* border: 1px solid gold; */
+}
+.home-abt-aside h1 {
+  width: 80%;
+  font-size: 40px;
+  position: absolute;
+  left:2%;
+  /* border: 1px solid hotpink; */
+}
+.home-abt-aside span {
+  display: block;
+  width: 46%;
+  font-size: 14px;
+  text-align: left;
+  position: absolute;
+  top:100px;
+  left:2%;
+}
+.home-abt-aside div {
+  width: 104px;
+  height: 39px;
+  line-height: 39px;
+  text-align: center;
+  border: 1px solid black;
+  position: absolute;
+  top: 150px;
+  left: 2%;
+}
   .home-about-title {
     width: 100%;
     margin: 0 auto;
@@ -602,6 +635,7 @@ el-carousel__item h3 {
   }
   .hot-msg-aside {
     width: 100%;
+    margin: 0 auto;
     float: left;
     padding-top: 10px;
   }
@@ -623,6 +657,7 @@ el-carousel__item h3 {
   }
 }
 @media screen and (max-width: 750px) {
+
   .block2 {
     display: none;
   }
@@ -630,15 +665,19 @@ el-carousel__item h3 {
     display: block;
   }
   .h-slide-h1 {
-    width: 300px;
+    width: 75%;
     margin: 0 auto;
     font-size: 30px;
     position: absolute;
     top: 40%;
-    left: 30%;
+    left: 17%;
     right: 35%;
     bottom: 50%;
+    /* border: 1px solid saddlebrown; */
     /* position: absolute;  bottom: 0px; */
+  }
+  .h-hot {
+    width: 100%;
   }
    .h-hot-product{
     width: 100%;
@@ -646,18 +685,68 @@ el-carousel__item h3 {
     margin-left: 0px;
   }
   .h-hot-proGoods {
-    width: 50%;
+    width:45%;
      margin: 0 auto;
     
   }
-  .home-cont {
-    margin-top: 5px;
-  }
-  .home-abt-aside h1 {
+ .home-abt-aside {
+  width: 100%;
+  margin-top: 50px;
+  color: black;
+  float: left;
+  text-align: left;
+  position: relative;
+  /* border: 1px solid gold; */
+}
+.home-abt-aside h1 {
+  width: 80%;
+  font-size: 30px;
+  position: absolute;
+  left:0px;
+  /* border: 1px solid red; */
+}
+.home-abt-aside span {
+  display: block;
+  width: 46%;
+  font-size: 14px;
+  text-align: left;
+  position: absolute;
+  top: 80px;
+  left:2%;
+}
+.home-abt-aside div {
+  width: 104px;
+  height: 39px;
+  line-height: 39px;
+  text-align: center;
+  border: 1px solid black;
+  position: absolute;
+  top: 150px;
+  left: 2%;
+}
+
+ .home-cont {
+  width: 206px;
+  height: 61px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 61px;
+  color: #001d5d;
+  background-color: white;
+  margin-top: 30px;
+  position: absolute;
+  top:55%;
+  left:0%;
+  right: 0%;
+  bottom: 0%;
+  z-index:10;
+  font-weight: 700;
+}
+  /* .home-abt-aside h1 {
     width: 100%;
     font-size: 100%;
     left: 18%;
-  }
+  } */
   .home-bg {
     background-attachment: scroll;
   }

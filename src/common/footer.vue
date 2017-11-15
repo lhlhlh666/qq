@@ -93,14 +93,14 @@
             </div>
             <div class="foot-ul clearfix">
                     <span style="color: white;  margin-right: 5px;"><i class="fa fa-qq" aria-hidden="true"></i></span>
-                    <span style="color: white;  margin-right: 5px;"><i class="fa fa-qq" aria-hidden="true"></i></span>
-                    <span style="color: white;  margin-right: 5px;"><i class="fa fa-qq" aria-hidden="true"></i></span>
-                    <span style="color: white;  margin-right: 5px;"><i class="fa fa-qq" aria-hidden="true"></i></span>
-                    <span style="color: white;  margin-right: 5px;"><i class="fa fa-qq" aria-hidden="true"></i></span>
-                    <span style="color: white;  margin-right: 5px;"><i class="fa fa-qq" aria-hidden="true"></i></span>
+                    <span style="color: white;  margin-right: 5px;"><i class="fa fa-weibo" aria-hidden="true"></i></span>
+                    <span style="color: white;  margin-right: 5px;"><i class="fa fa-tencent-weibo" aria-hidden="true"></i></span>
+                    <span style="color: white;  margin-right: 5px;"><i class="fa fa-weixin" aria-hidden="true"></i></span>
+                    <span style="color: white;  margin-right: 5px;"><i class="fa fa-facebook-official" aria-hidden="true"></i></span>
+                    <span style="color: white;  margin-right: 5px;"><i class="fa fa-instagram" aria-hidden="true"></i></span>
                                       
                 </div>
-                <div style="color: white;font-size:13px; ">Copyright © 2010-2015户外运动商品专卖 All rights reserved</div> 
+                <div style="color: white;font-size:12px; ">Copyright © 2010-2015户外运动商品专卖 All rights reserved</div> 
             
         </div>
       
@@ -130,7 +130,12 @@
  
  
 }
-.clearfix：after {
+.fa{
+  font-size: 13px;
+  margin-right: 10px;
+  }
+
+.clearfix::after {
   content: "";
 
   display: block;
@@ -153,6 +158,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
+  
   //  border: 1px solid blue;
 }
 .f-img {

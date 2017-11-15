@@ -11,19 +11,20 @@
       <div class="good-price pr">
         <div class="ds pa">
           <router-link :to="'goodsDetails?productId='+msg.productId">
-            <y-button text="查看详情" style="margin: 0 5px"></y-button>
+            <y-button class="btn" text="查看详情" style="margin: 0 5px;"></y-button>
           </router-link>
           <y-button text="加入购物车"
-                    style="margin: 0 5px"
+                    style="margin: 0 5px;"
                     @btnClick="addCart(msg.productId,msg.salePrice,msg.productName,msg.productImageBig)"
                     classStyle="main-btn"
           ></y-button>
         </div>
-        <p><span style="font-size: 16px">￥</span>
+        <p><span style="font-size: 16px;">￥</span>
           {{msg.salePrice}}</p>
       </div>
     </div>
   </div>
+ 
 </template>
 <script>
 import YButton from "/components/YButton";
@@ -96,10 +97,11 @@ export default {
 @import "../assets/style/theme";
 
 .good-item {
+    height: 330px;
+  // border: 1px solid gold; 
   background: #fff;
-  width: 33%;
-  transition: all 0.5s;
-  height: 430px;
+  
+  transition: all 0.5s; 
   &:hover {
     transform: translateY(-3px);
     box-shadow: 1px 1px 20px #999;
@@ -115,11 +117,11 @@ export default {
     width: 100%;
     display: none;
   }
-
   .good-img {
     img {
-      margin: 50px auto 10px;
-      @include wh(206px);
+      width: 65%;
+      margin: 20px auto;
+      // border: 1px solid darkgoldenrod;    
       display: block;
     }
   }
@@ -148,4 +150,57 @@ export default {
     padding: 10px;
   }
 }
+  @media screen and (max-width: 1000px) {
+    .good-item{
+        height: 330px;
+    }
+    .good-img{
+      width: 70%;
+       margin: 10px auto;
+    }
+  }
+@media screen and (max-width: 500px){
+  .good-item {
+    height: 250px;
+  background: #fff;  
+  transition: all 0.5s; 
+  .good-price p{
+    font-size: 16px;
+  }
+   .good-title{
+      font-size: 15px;
+    }
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 1px 1px 20px #999;
+    .good-price p {
+      font-weight:bold;
+      border:1px solid blue;
+      display: block;      
+    }
+   
+    .ds {
+      display: none;
+    }
+  }
+
+  .ds {
+    // @extend %block-center;
+    width: 100%;
+    display: none;
+    
+  }
+  
+  
+}
+}
+
+
+
+
+// .mall-goods{
+//   display: flex;
+//   height: 600px;
+//   border: 1px solid black;
+// }
 </style>

@@ -15,8 +15,12 @@
                  :class="{'defalut-address':item.isDefault}"></a>
             </div>
             <div class="operation">
-              <a href="javascript:;" @click="update(item)">修改</a>
-              <a href="javascript:;" :data-id="item.addressId" @click="del(item.addressId,i)">删除</a>
+              <a href="javascript:;" @click="update(item)">
+                <button style="width:50px">修改</button>
+                </a>
+              <a href="javascript:;" :data-id="item.addressId" @click="del(item.addressId,i)">
+                <button style="width:50px;">删除</button>
+                </a>
             </div>
           </div>
         </div>
@@ -68,6 +72,7 @@
           addressId: '',
           userName: '',
           tel: '',
+          
           streetName: '',
           isDefault: false
         }
@@ -161,6 +166,7 @@
 <style scoped lang="scss">
   .address-item {
     display: flex;
+    
     align-items: center;
     height: 115px;
     text-align: center;
@@ -177,13 +183,19 @@
       width: 80px;
       > a {
         text-align: center;
+        // 设置为默认
+      text-decoration: none;
+      color: black;
         /*display: none;*/
       }
     }
     .operation {
       width: 135px;
+      //  修改，删除
       a {
         padding: 10px 5px;
+        text-decoration: none;
+        color: black;
       }
     }
     &:hover {

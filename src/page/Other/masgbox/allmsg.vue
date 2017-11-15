@@ -5,7 +5,7 @@
                 <h3>全部资讯</h3>
                 <p>News</p>
               </div>
-              <ul style="margin-top:40px;list-style: none;" class="clearfix">
+              <ul style="margin-top:40px;list-style: none;" class="ul clearfix">
                   <li class="msgbox-msg-li" v-for="i in article" >
                       <img :src="i.imgcon" alt="">
                       <div class="msgbox-msg-li-text clearfix">
@@ -55,6 +55,9 @@ background: -o-linear-gradient(right, transparent, #fff 55%);
 background: -moz-linear-gradient(right, transparent, #fff 55%);
 background: linear-gradient(to right, transparent, #fff 55%);
 }
+/* .ul > .msgbox-msg-li {
+  transition: all 0.3s ease 0s;
+} */
 .msgbox-title h3 {
   font-size: 20px;
 }

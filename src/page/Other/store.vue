@@ -47,6 +47,7 @@ export default {
   box-shadow: 0 0 8px gray;
   color: black;
   border-radius: 5px;
+  z-index: 0;
 }
 @media screen and (max-width: 1000px) {
   .store-map {

@@ -1,29 +1,32 @@
 <template>
-  <div class="goods">
-    <div class="nav">
+<div class="allgoods">
+  <div class="goods clearfix">
 
+    <div class="nav clearfix">
       <div class="w">
         <a href="javascript:;" :class="{active:sortType===1}" @click="reset()">综合排序</a>
         <a href="javascript:;" @click="sort(1)" :class="{active:sortType===2}">价格从低到高</a>
         <a href="javascript:;" @click="sort(-1)" :class="{active:sortType===3}">价格从高到低</a>
+      </div>
         <div class="price-interval">
           <input type="number" class="input" placeholder="价格" v-model="min">
           <span style="margin: 0 5px"> - </span>
           <input type="number" placeholder="价格" v-model="max">
           <y-button text="确定" classStyle="main-btn" @btnClick="reset" style="margin-left: 10px;"></y-button>
         </div>
-      </div>
+  
     </div>
 
     <!--商品-->
     <div class="goods-box w">
-      <mall-goods v-for="(item,i) in computer" :key="i" :msg="item"></mall-goods>
+      <mall-goods v-for="(item,i) in computer" :key="i" :msg="item" ></mall-goods>
     </div>
     <!-- <div v-show="!busy" class="w" style="text-align: center;background: #fff" v-infinite-scroll="loadMore"
          infinite-scroll-disabled="busy" infinite-scroll-distance="100">
       正在加载中...
     </div> -->
   </div>
+</div>
 </template>
 <script>
   import {getComputer} from '/api/goods.js'
@@ -112,14 +115,25 @@
 <style lang="scss" rel="stylesheet/scss" scoped>
   @import "../../assets/style/mixin";
   @import "../../assets/style/theme";
-
+  .nav{
+   
+  }
+ .allgoods{
+  width: 1010px;
+  margin:0 auto;
+}
   .goods{
-    width: 1200px;
+    width:100%;
     margin:20px auto;
+    // border: 1px solid fuchsia;
 
   }
-
   .nav {
+     width: 1010px;
+     height:500px;
+    //  border:1px solid blue;
+    display:flex;
+    flex-wrap:wrap;
     height: 60px;
     line-height: 60px;
     > div {
@@ -146,8 +160,10 @@
         margin-left: 10px;
       }
     }
-    .price-interval {
+    .price-interval {  
+      // display:block;   
       padding: 0 15px;
+      // border:1px solid red;
       @extend %block-center;
       input[type=number] {
         border: 1px solid #ccc;
@@ -157,13 +173,46 @@
       }
     }
   }
+ 
+
 
   .goods-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     > div {
-      float: left;
-      border: 1px solid #efefef;
+      width: 30%;   
+      text-align: center; 
+      margin: 10px auto;  
+      border:1px solid #E1E1E1;
+      
     }
   }
+  @media screen and (max-width: 1000px) {   
+.allgoods{
+  width: 100%;
+  margin:0 auto;
 
+}
+.goods-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    > div {
+      width: 45%;    
+      text-align: center; 
+      margin:10px auto;  
+    }
+  }
+}
+@media screen and (max-width: 750px){
+    .price-interval{
+     display:none !important;
+    }
+    .w{
+      width:100% ;      
+    }
+
+}
 
 </style>

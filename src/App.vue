@@ -22,8 +22,24 @@ export default {
   
   /* margin-top: 60px; */
 }
+.clearfix::after {
+  content: "";
+
+  display: block;
+
+  clear: both;
+
+  height: 0px;
+
+  overflow: hidden;
+}
+
+.clearfix {
+  -ms-zoom: 1;
+}
 *{
   margin: 0;
   padding: 0;
+  
 }
 </style>
